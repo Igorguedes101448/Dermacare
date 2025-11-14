@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marcar Consulta - Clínica DermaCare</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">
+                <div class="logo-icon">DC</div>
+                <span>DermaCare</span>
+            </div>
+            <button class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="services.html">Serviços</a></li>
+                <li><a href="appointments.html" class="active">Marcar Consulta</a></li>
+                <li><a href="contact.html">Contacto</a></li>
+                <li><a href="login.html" id="loginLink">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="section" style="padding-top: 120px;">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Agende Sua Consulta</span>
+                <h1 class="section-title">Marcar Consulta</h1>
+                <p class="section-subtitle">
+                    Preencha o formulário abaixo para agendar a sua consulta com nossos especialistas
+                </p>
+            </div>
+
+            <div style="max-width: 700px; margin: 3rem auto;">
+                <div id="appointmentAlert" class="hidden"></div>
+
+                <!-- Formulário de Marcação -->
+                <div class="card">
+                    <form id="appointmentForm">
+                        <div class="form-group">
+                            <label for="service">Serviço *</label>
+                            <select id="service" class="form-control" required>
+                                <option value="">Selecione um serviço</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="doctor">Médico *</label>
+                            <select id="doctor" class="form-control" required>
+                                <option value="">Selecione um médico</option>
+                            </select>
+                        </div>
+
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                            <div class="form-group">
+                                <label for="date">Data da Consulta *</label>
+                                <input type="date" id="date" class="form-control" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="time">Horário *</label>
+                                <select id="time" class="form-control" required>
+                                    <option value="">Selecione um horário</option>
+                                    <option value="09:00">09:00</option>
+                                    <option value="09:30">09:30</option>
+                                    <option value="10:00">10:00</option>
+                                    <option value="10:30">10:30</option>
+                                    <option value="11:00">11:00</option>
+                                    <option value="11:30">11:30</option>
+                                    <option value="14:00">14:00</option>
+                                    <option value="14:30">14:30</option>
+                                    <option value="15:00">15:00</option>
+                                    <option value="15:30">15:30</option>
+                                    <option value="16:00">16:00</option>
+                                    <option value="16:30">16:30</option>
+                                    <option value="17:00">17:00</option>
+                                    <option value="17:30">17:30</option>
+                                    <option value="18:00">18:00</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="notes">Observações</label>
+                            <textarea id="notes" class="form-control" style="min-height: 120px;"
+                                      placeholder="Descreva brevemente o motivo da consulta ou qualquer informação relevante"></textarea>
+                        </div>
+
+                        <div id="authRequired" class="hidden">
+                            <div class="alert alert-info">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink: 0;">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <line x1="12" y1="16" x2="12" y2="12"></line>
+                                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                                </svg>
+                                <div>
+                                    <p style="margin: 0;">É necessário fazer login para marcar uma consulta.</p>
+                                    <a href="login.html" class="btn btn-primary" style="margin-top: 1rem; display: inline-block;">
+                                        Fazer Login
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" id="submitBtn" style="width: 100%;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px;">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                            </svg>
+                            Confirmar Marcação
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Minhas Consultas (apenas para utilizadores autenticados) -->
+            <div id="myAppointments" class="hidden" style="margin-top: 4rem;">
+                <h2 class="section-title">Minhas Consultas</h2>
+                <div id="appointmentsList" style="margin-top: 2rem;">
+                    <!-- Lista de consultas será carregada aqui -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Clínica DermaCare</h3>
+                <p>Especialistas em dermatologia dedicados à saúde e beleza da sua pele com mais de 20 anos de experiência.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Links Úteis</h3>
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="services.html">Serviços</a></li>
+                    <li><a href="appointments.html">Marcar Consulta</a></li>
+                    <li><a href="contact.html">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contacto</h3>
+                <ul>
+                    <li>Tel: +351 21 123 4567</li>
+                    <li>Email: geral@dermacare.pt</li>
+                    <li>Morada: Av. da República, 123</li>
+                    <li>1050-123 Lisboa, Portugal</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Horário de Atendimento</h3>
+                <ul>
+                    <li>Segunda a Sexta: 9h00 - 19h00</li>
+                    <li>Sábado: 9h00 - 13h00</li>
+                    <li>Domingo: Encerrado</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>2025 Clínica DermaCare. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/appointments.js"></script>
+</body>
+</html>
