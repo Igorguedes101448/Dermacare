@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile - Dermacare</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Dermacare</h1>
+            <p class="tagline">Your Skin Health Partner</p>
+        </header>
+        
+        <main class="profile-container">
+            <div class="profile-header">
+                <h2>User Profile</h2>
+                <button id="editBtn" class="btn-primary">Edit Profile</button>
+            </div>
+            
+            <div class="profile-content">
+                <div class="profile-image-section">
+                    <div class="profile-image" id="profileImage">
+                        <img src="https://via.placeholder.com/150" alt="Profile Picture" id="profilePic">
+                    </div>
+                    <button id="uploadBtn" class="btn-secondary" style="display: none;">Upload Photo</button>
+                </div>
+                
+                <div class="profile-info">
+                    <div class="info-group">
+                        <label>Full Name</label>
+                        <div class="info-display" id="nameDisplay">John Doe</div>
+                        <input type="text" class="info-edit" id="nameEdit" value="John Doe" style="display: none;">
+                    </div>
+                    
+                    <div class="info-group">
+                        <label>Email</label>
+                        <div class="info-display" id="emailDisplay">john.doe@example.com</div>
+                        <input type="email" class="info-edit" id="emailEdit" value="john.doe@example.com" style="display: none;">
+                    </div>
+                    
+                    <div class="info-group">
+                        <label>Phone</label>
+                        <div class="info-display" id="phoneDisplay">+1 (555) 123-4567</div>
+                        <input type="tel" class="info-edit" id="phoneEdit" value="+1 (555) 123-4567" style="display: none;">
+                    </div>
+                    
+                    <div class="info-group">
+                        <label>Date of Birth</label>
+                        <div class="info-display" id="dobDisplay">January 1, 1990</div>
+                        <input type="date" class="info-edit" id="dobEdit" value="1990-01-01" style="display: none;">
+                    </div>
+                    
+                    <div class="info-group">
+                        <label>Address</label>
+                        <div class="info-display" id="addressDisplay">123 Main St, City, State 12345</div>
+                        <textarea class="info-edit" id="addressEdit" style="display: none;">123 Main St, City, State 12345</textarea>
+                    </div>
+                    
+                    <div class="info-group">
+                        <label>Medical History</label>
+                        <div class="info-display" id="medicalDisplay">No known allergies</div>
+                        <textarea class="info-edit" id="medicalEdit" style="display: none;">No known allergies</textarea>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="profile-actions" style="display: none;">
+                <button id="saveBtn" class="btn-primary">Save Changes</button>
+                <button id="cancelBtn" class="btn-secondary">Cancel</button>
+            </div>
+        </main>
+        
+        <footer>
+            <p>&copy; 2025 Dermacare. All rights reserved.</p>
+        </footer>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
